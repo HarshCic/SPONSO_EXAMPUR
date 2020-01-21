@@ -4,15 +4,29 @@
 ?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $link=$_POST['link'];
-  $title=$_POST['title'];
-  $status=$_POST['status'];
-  $download_link=$_POST['download_link'];
-  $query="INSERT into exampur_special(link,title,live_status,download_link) values ('".$link."','".$title."','".$status."','".$download_link."')";
-  $result=mysqli_query($ses,$query);
+  if (isset($_POST['upload'])) {
+  	// Get image name
+  	$image = $_FILES['image']['name'];
+  	// Get text
+  	$image_text = mysqli_real_escape_string($ses, $_POST['image_text']);
+
+  	// image file directory
+  	$target = "../images_concept/".basename($image);
+
+  	$sql = "INSERT INTO concept (concept_logo, concept_name) VALUES ('$image', '$image_text')";
+  	// execute query
+  	mysqli_query($ses, $sql);
+
+  	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+  		$msg = "Image uploaded successfully";
+  	}else{
+  		$msg = "Failed to upload image";
+  	}
+  }
+  $result = mysqli_query($ses, "SELECT * FROM images");
 ?>
 <script type="text/javascript">
-  alert("Video added Succesfully");
+  alert("Concept added Succesfully");
 </script>
 <?php
 }
@@ -55,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   <li ><a href="index.php"> Exampur </a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li style="float:right;"><a href="#">Data Manager Panel</a></li>
+                <li style="float:right;"><a href="#">Admin Panel</a></li>
               </ul>
 
           </div>
@@ -139,14 +153,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   <div class="row">
                       <div class="col-lg-12 jumbotron">
                         <br>
-                        <h1>Add A Featured Video..</h1>
+                        <h1>Add A Concept..</h1>
                       </div>
                   </div>
 
               </div>
 
-              <form method="POST" action="">
-                <div class="form-group">
+              <form method="POST" action="" enctype="multipart/form-data">
+                <!-- <div class="form-group">
                   <label for="link">Link</label>
                   <input type="text" class="form-control" name="link" aria-describedby="link" placeholder="youtube.com" required>
 
@@ -154,23 +168,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="form-group">
                   <label for="title">Title</label>
                   <input type="text" class="form-control" name="title" placeholder="Include the title of Video" required>
+                </div> -->
+
+                <!-- <input type="hidden" name="size" value="1000000"> -->
+                <div class="form-group">
+                  <label for="link">Select Logo </label>
+                  <input type="file" name="image" class="form-control" aria-describedby="link"  required>
+
+
                 </div>
                 <div class="form-group">
-                  <label for="status">Live Status</label>
-                  <select class="form-control" name="status" required>
-                    <option value="0">Live</option>
-                    <option value="1">Class Recorded</option>
-                    <option value="2">Upcoming Class</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="download_link">Download Link</label>
-                  <input type="text" class="form-control" name="download_link" placeholder="Paste the download link here.." required>
+                  <label for="title">Concept Name</label>
+                  <input type="text" class="form-control" name="image_text" placeholder="Say something about this image..." required>
+
                 </div>
 
                 <small id="emailHelp" class="form-text text-muted">*All fields are Mandatory.</small>
                 <hr>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="upload" class="btn btn-primary">Submit</button>
               </form>
           </div>
           <!-- /#page-content-wrapper -->

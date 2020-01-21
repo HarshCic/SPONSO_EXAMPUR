@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                  </li>
                  <li>
 
-                      <a class="dropdown-btn"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> Concept
+                      <a class="dropdown-btn"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Concept
                         <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
                       </a>
                       <div class="dropdown-container">
@@ -117,6 +117,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <a href="concept.php">Edit Concept</a>
                       </div>
                 </li>
+                <li>
+
+                     <a class="dropdown-btn"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Exam
+                       <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                     </a>
+                     <div class="dropdown-container">
+                       <a href="examadd.php">Add Exam</a>
+                       <a href="exam.php">Edit Exam</a>
+                     </div>
+               </li>
+               <li>
+
+                    <a class="dropdown-btn"><span class="glyphicon glyphicon-tags" aria-hidden="true"> </span> Subject
+                      <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                    </a>
+                    <div class="dropdown-container">
+                      <a href="subjectadd.php">Add Subject</a>
+                      <a href="subject.php">Edit Subject</a>
+                    </div>
+              </li>
                  <li>
                      <a href="study_material.php"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Study Material </a>
                  </li>
@@ -150,18 +170,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   <input type="text" class="form-control" name="title" placeholder="Include the title of Video" required>
                 </div> -->
 
-                <input type="hidden" name="size" value="1000000">
-              	<div>
-              	  <input type="file" name="image">
-              	</div>
-              	<div>
-                  <textarea
-                  	id="text"
-                  	cols="40"
-                  	rows="4"
-                  	name="image_text"
-                  	placeholder="Say something about this image..."></textarea>
-              	</div>
+                <!-- <input type="hidden" name="size" value="1000000"> -->
+                <div class="form-group">
+                  <label for="link">Select Logo </label>
+                  <input type="file" name="image" class="form-control" aria-describedby="link"  required>
+
+
+                </div>
+                <div class="form-group">
+                  <label for="title">Concept Name</label>
+                  <input type="text" class="form-control" name="image_text" placeholder="Say something about this image..." required>
+
+                </div>
+
                 <small id="emailHelp" class="form-text text-muted">*All fields are Mandatory.</small>
                 <hr>
                 <button type="submit" name="upload" class="btn btn-primary">Submit</button>

@@ -91,6 +91,36 @@ $query=mysqli_query($ses,"SELECT * FROM exampur_special ORDER BY id DESC LIMIT $
                        </div>
                  </li>
                  <li>
+
+                      <a class="dropdown-btn"><span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Concept
+                        <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                      </a>
+                      <div class="dropdown-container">
+                        <a href="conceptadd.php">Add Concept</a>
+                        <a href="concept.php">Edit Concept</a>
+                      </div>
+                </li>
+                <li>
+
+                     <a class="dropdown-btn"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Exam
+                       <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                     </a>
+                     <div class="dropdown-container">
+                       <a href="examadd.php">Add Exam</a>
+                       <a href="exam.php">Edit Exam</a>
+                     </div>
+               </li>
+               <li>
+
+                    <a class="dropdown-btn"><span class="glyphicon glyphicon-tags" aria-hidden="true"> </span> Subject
+                      <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                    </a>
+                    <div class="dropdown-container">
+                      <a href="subjectadd.php">Add Subject</a>
+                      <a href="subject.php">Edit Subject</a>
+                    </div>
+              </li>
+                 <li>
                      <a href="study_material.php"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Study Material </a>
                  </li>
                   <!-- <li>
