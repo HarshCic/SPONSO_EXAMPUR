@@ -1,3 +1,4 @@
+
 <?php
 include '../config.php';
 $id=$_GET['id'];
@@ -8,23 +9,46 @@ $id=$_GET['id'];
  ?>
  <?php
  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-   $link=$_POST['link'];
-   $title=$_POST['title'];
-   $status=$_POST['status'];
-   $download_link=$_POST['download_link'];
-   $query="UPDATE featured_video SET link='$link',title='$title',live_status='$status',download_link='$download_link' WHERE id='$id'";
-   $result=mysqli_query($ses,$query) or die($query);
- ?>
- <script type="text/javascript">
-   alert("Video Updated Succesfully");
- </script>
 
- <?php
- $query1=mysqli_query($ses,"SELECT * FROM featured_video WHERE id=$id");
+   if (isset($_POST['upload'])) {
+    // $concept=$_POST['concept'];
+   	// Get image name
+   	$image = $_FILES['image']['name'];
+   	// Get text
+   	$image_text = mysqli_real_escape_string($ses, $_POST['image_text']);
+
+   	// image file directory
+   	$target = "../images_concept/".basename($image);
+
+   	$sql = "UPDATE concept SET concept_name='$image_text',concept_logo='$image' WHERE id='$id'";
+   	// execute query
+   	mysqli_query($ses, $sql);
+
+   	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+   		$msg = "Image uploaded successfully";
+      ?>
+      <script type="text/javascript">
+        alert("Concept Updated Succesfully");
+      </script>
+      <?php
+   	}else{
+      ?>
+      <script type="text/javascript">
+        alert("Concept not Updated Succesfully");
+      </script>
+      <?php
+   	}
+   }
+   // $query=
+   // $result=mysqli_query($ses,$query) or die($query);
+
+
+
+ $query1=mysqli_query($ses,"SELECT * FROM concept WHERE id=$id");
  $fetch=mysqli_fetch_array($query1);
  }
  else {
-   $query1=mysqli_query($ses,"SELECT * FROM featured_video WHERE id=$id");
+   $query1=mysqli_query($ses,"SELECT * FROM concept WHERE id=$id");
    $fetch=mysqli_fetch_array($query1);
  }
   ?>
@@ -50,7 +74,6 @@ $id=$_GET['id'];
 
    </head>
    <body>
-
      <?php include 'main.php'; ?>
            <!-- Page Content -->
            <div id="page-content-wrapper">
@@ -58,39 +81,34 @@ $id=$_GET['id'];
                    <div class="row">
                        <div class="col-lg-12 jumbotron">
                          <br>
-                         <h1>Edit Featured Video.. </h1>
-
+                         <h1>Edit Concept..</h1>
                        </div>
                    </div>
 
                </div>
 
-               <form method="POST" action="">
+               <form method="POST" action="" enctype="multipart/form-data">
                  <div class="form-group">
-                   <label for="link">Link</label>
-                   <input type="text" value='<?php echo $fetch["link"]?>' class="form-control" name="link" aria-describedby="link" placeholder="youtube.com" required>
+                   <label for="title">Existing Logo</label>
+                   <a class="form-control" href=<?php echo '../images_concept/'.$fetch['concept_logo']?>><?php echo $fetch['concept_logo'] ?></a>
+
 
                  </div>
                  <div class="form-group">
-                   <label for="title">Title</label>
-                   <input type="text" value='<?php echo $fetch["title"]?>' class="form-control" name="title" placeholder="Include the title of Video" required>
+                   <label for="link">Select New Logo </label>
+                   <input type="file" name="image" class="form-control-file" aria-describedby="link"  required>
+
+
                  </div>
                  <div class="form-group">
-                   <label for="status">Live Status</label>
-                   <select  class="form-control" name="status" required>
-                     <option value="0" <?php if($fetch["live_status"]==0){ echo "selected"; } ?>>Live</option>
-                     <option value="1"  <?php if($fetch["live_status"]==1){ echo "selected"; } ?>>Class Recorded</option>
-                     <option value="2"  <?php if($fetch["live_status"]==2){ echo "selected"; } ?>>Upcoming Class</option>
-                   </select>
-                 </div>
-                 <div class="form-group">
-                   <label for="download_link">Download Link</label>
-                   <input type="text" value='<?php echo $fetch["download_link"] ?>' class="form-control" name="download_link" placeholder="Paste the download link here.." required>
+                   <label for="title">Concept Name</label>
+                   <input type="text" class="form-control" name="image_text" value=<?php echo $fetch['concept_name'] ?> required>
+
                  </div>
 
                  <small id="emailHelp" class="form-text text-muted">*All fields are Mandatory.</small>
                  <hr>
-                 <button type="submit" class="btn btn-primary">Update</button>
+                 <button type="submit" name="upload" class="btn btn-primary">Update</button>
                </form>
            </div>
            <!-- /#page-content-wrapper -->

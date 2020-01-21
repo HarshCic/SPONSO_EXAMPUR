@@ -1,19 +1,36 @@
-<?php include '../config.php';
-include '../session.php';
-if (isset($_GET['page'])) {
-  // code...
-  $page=$_GET['page'];
-}
-else {
-  $page=1;
-}
-$num_per_page=02;
-$start_from=($page-1)*02;
-
+<?php include '../config.php'; ?>
+<?php
+   include('../session.php');
 ?>
 <?php
-$query=mysqli_query($ses,"SELECT * FROM concept ORDER BY id DESC LIMIT $start_from,$num_per_page ") or die($query); ?>
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if (isset($_POST['upload'])) {
+  	// Get image name
+  	$image = $_FILES['image']['name'];
+  	// Get text
+  	$image_text = mysqli_real_escape_string($ses, $_POST['image_text']);
 
+  	// image file directory
+  	$target = "../images_subject/".basename($image);
+
+  	$sql = "INSERT INTO subject (subject_logo, subject_name) VALUES ('$image', '$image_text')";
+  	// execute query
+  	mysqli_query($ses, $sql);
+
+  	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+  		$msg = "Image uploaded successfully";
+  	}else{
+  		$msg = "Failed to upload image";
+  	}
+  }
+
+?>
+<script type="text/javascript">
+  alert("subject added Succesfully");
+</script>
+<?php
+}
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -36,69 +53,49 @@ $query=mysqli_query($ses,"SELECT * FROM concept ORDER BY id DESC LIMIT $start_fr
 
   </head>
   <body>
-          <!-- /#sidebar-wrapper -->
-          <?php include 'main.php'; ?>
+    <?php include 'main.php'; ?>
           <!-- Page Content -->
           <div id="page-content-wrapper">
               <div class="container-fluid">
                   <div class="row">
                       <div class="col-lg-12 jumbotron">
                         <br>
-                        <h1>Concepts..</h1>
+                        <h1>Add A Subject..</h1>
                       </div>
                   </div>
 
               </div>
 
+              <form method="POST" action="" enctype="multipart/form-data">
+                <!-- <div class="form-group">
+                  <label for="link">Link</label>
+                  <input type="text" class="form-control" name="link" aria-describedby="link" placeholder="youtube.com" required>
 
+                </div>
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" class="form-control" name="title" placeholder="Include the title of Video" required>
+                </div> -->
+
+                <!-- <input type="hidden" name="size" value="1000000"> -->
+                <div class="form-group">
+                  <label for="link">Select Logo </label>
+                  <input type="file" name="image" class="form-control" aria-describedby="link"  required>
+
+
+                </div>
+                <div class="form-group">
+                  <label for="title">Subject Name</label>
+                  <input type="text" class="form-control" name="image_text" placeholder="Enter here..." required>
+
+                </div>
+
+                <small id="emailHelp" class="form-text text-muted">*All fields are Mandatory.</small>
+                <hr>
+                <button type="submit" name="upload" class="btn btn-primary">Submit</button>
+              </form>
           </div>
           <!-- /#page-content-wrapper -->
-
-          <div class="container table-responsive">
-            <table class="table table-striped table-bordered">
-              <thead>
-                <tr>
-
-                  <th>Concept Name</th>
-                  <th>Concept Logo</th>
-
-                  <th>Delete</th>
-                  <th>Edit</th>
-
-                </tr>
-              </thead>
-              <tbody>
-                <?php while ($fetch=mysqli_fetch_array($query)) { ?>
-
-                  <tr>
-
-                    <td><?php echo $fetch['concept_name'] ?></td>
-                    <td><a href=<?php echo '../images_concept/'.$fetch['concept_logo']?>> <?php echo $fetch['concept_logo'] ?></a></td>
-                    <td> <a href=<?php echo "delete_concept.php?id=".$fetch['id']; ?>> <button type="button" class="btn btn-danger">Delete</button> </a></td>
-                    <td> <a href=<?php echo "edit_concept.php?id=".$fetch['id']; ?>><button type="button" class="btn btn-info">Edit</button></a></td>
-                  </tr>
-              <?php } ?>
-
-              </tbody>
-            </table>
-            <?php
-            $pr_query="SELECT * from concept";
-            $pr_result=mysqli_query($ses,$pr_query);
-            $total_record=mysqli_num_rows($pr_result);
-            $total_page=ceil($total_record/$num_per_page);
-            if ($page>1) {
-              echo "<a href='concept.php?page=".($page-1)."'class='btn btn-primary'>Previous</a>";
-            }
-            for ($i=1; $i <=$total_page ; $i++) {
-              echo "<a href='concept.php?page=".$i."'class='btn btn-info'>$i</a>";
-            }
-            if ($i-1>$page) {
-              echo "<a href='concept.php?page=".($page+1)."'class='btn btn-primary'>Next</a>";
-            }
-            echo '<hr>';
-            echo "Page-".$page;
-             ?>
-          </div>
       </div>
   </div>
   <!-- /#wrapper -->

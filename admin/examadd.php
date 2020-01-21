@@ -1,22 +1,33 @@
-<?php include '../config.php';
-
-?>
+<?php include '../config.php'; ?>
 <?php
    include('../session.php');
 ?>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $pdf_link=$_POST['link'];
-  $title=$_POST['title'];
-  $status=$_POST['status'];
-  $type=$_POST['type'];
-  $price=$_POST['price'];
-  $query="INSERT into study_material(title,pdf_link,type,free_status,price) values  ('".$title."','".$pdf_link."','".$type."','".$status."','".$price."')";
-  $result=mysqli_query($ses,$query);
-  echo $price;
+  if (isset($_POST['upload'])) {
+  	// Get image name
+    $category=$_POST['category'];
+  	$image = $_FILES['image']['name'];
+  	// Get text
+  	$image_text = mysqli_real_escape_string($ses, $_POST['image_text']);
+
+  	// image file directory
+  	$target = "../images_exam/".basename($image);
+
+  	$sql = "INSERT INTO exam (exam_logo, exam_name,exam_category) VALUES ('$image', '$image_text','$category')";
+  	// execute query
+  	mysqli_query($ses, $sql);
+
+  	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+  		$msg = "Image uploaded successfully";
+  	}else{
+  		$msg = "Failed to upload image";
+  	}
+  }
+  $result = mysqli_query($ses, "SELECT * FROM images");
 ?>
 <script type="text/javascript">
-  alert("Study Material added Succesfully");
+  alert("Exam added Succesfully");
 </script>
 <?php
 }
@@ -44,54 +55,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </head>
   <body>
     <?php include 'main.php'; ?>
-
           <!-- Page Content -->
           <div id="page-content-wrapper">
               <div class="container-fluid">
                   <div class="row">
                       <div class="col-lg-12 jumbotron">
                         <br>
-                        <h1>Add Study Material..</h1>
+                        <h1>Add A Exam..</h1>
                       </div>
                   </div>
 
               </div>
 
-              <form method="POST" action="">
+              <form method="POST" action="" enctype="multipart/form-data">
+                <!-- <div class="form-group">
+                  <label for="link">Link</label>
+                  <input type="text" class="form-control" name="link" aria-describedby="link" placeholder="youtube.com" required>
+
+                </div>
                 <div class="form-group">
                   <label for="title">Title</label>
-                  <input type="text" class="form-control" name="title" placeholder="Include the title of Study material" required>
-                </div>
+                  <input type="text" class="form-control" name="title" placeholder="Include the title of Video" required>
+                </div> -->
+
+                <!-- <input type="hidden" name="size" value="1000000"> -->
                 <div class="form-group">
-                  <label for="link">Link</label>
-                  <input type="text" class="form-control" name="link" aria-describedby="link" placeholder="book.com" required>
+                  <label for="link">Select Logo </label>
+                  <input type="file" name="image" class="form-control" aria-describedby="link"  required>
+
 
                 </div>
-
                 <div class="form-group">
-                  <label for="type">Type</label>
-                  <select class="form-control" name="type" required>
-                    <option value="1">Ebooks</option>
-                    <option value="2">Class Notes</option>
-                    <option value="3">Previous Year Questions</option>
-                  </select>
+                  <label for="title">Exam Name</label>
+                  <input type="text" class="form-control" name="image_text" placeholder="IBPS, UPSC, SSC ...." required>
+
                 </div>
                 <div class="form-group">
-                  <label for="status">Free Status</label>
-                  <select class="form-control" name="status" required>
-                    <option value="0">Paid</option>
-                    <option value="1">Free</option>
+                  <label for="title">Exam Category</label>
+                  <input type="text" class="form-control" name="category" placeholder="Enter here.." required>
 
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="price">Price</label>
-                  <input type="text" class="form-control" name="price" placeholder="Enter price in INR" required>
                 </div>
 
                 <small id="emailHelp" class="form-text text-muted">*All fields are Mandatory.</small>
                 <hr>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="upload" class="btn btn-primary">Submit</button>
               </form>
           </div>
           <!-- /#page-content-wrapper -->

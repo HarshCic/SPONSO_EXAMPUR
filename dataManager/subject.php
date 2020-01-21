@@ -12,7 +12,7 @@ $start_from=($page-1)*02;
 
 ?>
 <?php
-$query=mysqli_query($ses,"SELECT * FROM concept ORDER BY id DESC LIMIT $start_from,$num_per_page ") or die($query); ?>
+$query=mysqli_query($ses,"SELECT * FROM subject ORDER BY id DESC LIMIT $start_from,$num_per_page ") or die($query); ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -44,7 +44,7 @@ $query=mysqli_query($ses,"SELECT * FROM concept ORDER BY id DESC LIMIT $start_fr
                   <div class="row">
                       <div class="col-lg-12 jumbotron">
                         <br>
-                        <h1>Concepts..</h1>
+                        <h1>Subjects..</h1>
                       </div>
                   </div>
 
@@ -59,8 +59,8 @@ $query=mysqli_query($ses,"SELECT * FROM concept ORDER BY id DESC LIMIT $start_fr
               <thead>
                 <tr>
 
-                  <th>Concept Name</th>
-                  <th>Concept Logo</th>
+                  <th>Subject Name</th>
+                  <th>Subject Logo</th>
 
                   <th>Delete</th>
                   <th>Edit</th>
@@ -72,28 +72,28 @@ $query=mysqli_query($ses,"SELECT * FROM concept ORDER BY id DESC LIMIT $start_fr
 
                   <tr>
 
-                    <td><?php echo $fetch['concept_name'] ?></td>
-                    <td><a href=<?php echo '../images_concept/'.$fetch['concept_logo']?>> <?php echo $fetch['concept_logo'] ?></a></td>
-                    <td> <a href=<?php echo "delete_concept.php?id=".$fetch['id']; ?>> <button type="button" class="btn btn-danger">Delete</button> </a></td>
-                    <td> <a href=<?php echo "edit_concept.php?id=".$fetch['id']; ?>><button type="button" class="btn btn-info">Edit</button></a></td>
+                    <td><?php echo $fetch['subject_name'] ?></td>
+                    <td><a href=<?php echo '../images_subject/'.$fetch['subject_logo']?>> <?php echo $fetch['subject_logo'] ?></a></td>
+                    <td> <a href=<?php echo "delete_subject.php?id=".$fetch['id']; ?>> <button type="button" class="btn btn-danger">Delete</button> </a></td>
+                    <td> <a href=<?php echo "edit_subject.php?id=".$fetch['id']; ?>><button type="button" class="btn btn-info">Edit</button></a></td>
                   </tr>
               <?php } ?>
 
               </tbody>
             </table>
             <?php
-            $pr_query="SELECT * from concept";
+            $pr_query="SELECT * from subject";
             $pr_result=mysqli_query($ses,$pr_query);
             $total_record=mysqli_num_rows($pr_result);
             $total_page=ceil($total_record/$num_per_page);
             if ($page>1) {
-              echo "<a href='concept.php?page=".($page-1)."'class='btn btn-primary'>Previous</a>";
+              echo "<a href='subject.php?page=".($page-1)."'class='btn btn-primary'>Previous</a>";
             }
             for ($i=1; $i <=$total_page ; $i++) {
-              echo "<a href='concept.php?page=".$i."'class='btn btn-info'>$i</a>";
+              echo "<a href='subject.php?page=".$i."'class='btn btn-info'>$i</a>";
             }
             if ($i-1>$page) {
-              echo "<a href='concept.php?page=".($page+1)."'class='btn btn-primary'>Next</a>";
+              echo "<a href='subject.php?page=".($page+1)."'class='btn btn-primary'>Next</a>";
             }
             echo '<hr>';
             echo "Page-".$page;
