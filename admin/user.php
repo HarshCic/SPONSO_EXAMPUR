@@ -12,7 +12,7 @@ $start_from=($page-1)*10;
 
 ?>
 <?php
-$query=mysqli_query($ses,"SELECT * FROM exampur_special ORDER BY id DESC LIMIT $start_from,$num_per_page ") or die($query); ?>
+$query=mysqli_query($ses,"SELECT * FROM user WHERE datetime!='0000-00-00 00:00:00' ORDER BY id DESC LIMIT $start_from,$num_per_page") or die($query); ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -36,15 +36,15 @@ $query=mysqli_query($ses,"SELECT * FROM exampur_special ORDER BY id DESC LIMIT $
 
   </head>
   <body>
-       <?php include 'main.php'; ?>
-
+          <!-- /#sidebar-wrapper -->
+          <?php include 'main.php'; ?>
           <!-- Page Content -->
           <div id="page-content-wrapper">
               <div class="container-fluid">
                   <div class="row">
                       <div class="col-lg-12 jumbotron">
                         <br>
-                        <h1>Exampur Videos..</h1>
+                        <h1>Users..</h1>
                       </div>
                   </div>
 
@@ -58,12 +58,17 @@ $query=mysqli_query($ses,"SELECT * FROM exampur_special ORDER BY id DESC LIMIT $
             <table class="table table-striped table-bordered">
               <thead>
                 <tr>
-                  <th>Link</th>
-                  <th>Title</th>
-                  <th>Live Status</th>
-                  <th>Download Link</th>
+
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Username</th>
+                  <th>Photo</th>
+                  <th>Date & Time</th>
                   <th>Delete</th>
+                  <th>Password</th>
                   <th>Edit</th>
+
 
                 </tr>
               </thead>
@@ -71,40 +76,36 @@ $query=mysqli_query($ses,"SELECT * FROM exampur_special ORDER BY id DESC LIMIT $
                 <?php while ($fetch=mysqli_fetch_array($query)) { ?>
 
                   <tr>
-                    <td><a href=<?php echo $fetch['link']?>><?php echo $fetch['link']?></a></td>
-                    <td><?php echo $fetch['title'] ?></td>
-                    <td><?php if ($fetch['live_status']==0) {
 
-                      echo "Live";
-                    }
-                    elseif ($fetch['live_status']==1) {
-                        echo "Class Recorded";
-                    }
-                    else {
+                    <td><?php echo $fetch['name'] ?></td>
+                    <td><?php echo $fetch['email'] ?></td>
+                    <td><?php echo $fetch['phone'] ?></td>
+                    <td><?php echo $fetch['username'] ?></td>
 
-                        echo "Upcoming Class";
-                    } ?></td>
-                    <td><a href=<?php echo $fetch['download_link']?>> <?php echo $fetch['download_link'] ?></a></td>
-                    <td> <a href=<?php echo "delete_exampur.php?id=".$fetch['id']; ?>> <button type="button" class="btn btn-danger">Delete</button> </a></td>
-                    <td> <a href=<?php echo "edit_exampur_video.php?id=".$fetch['id']; ?>><button type="button" class="btn btn-info">Edit</button></a></td>
+
+                    <td><a href=<?php echo $fetch['photo']?>> <?php echo $fetch['photo'] ?></a></td>
+                    <td><?php echo $fetch['datetime'] ?></td>
+                    <td> <a href=<?php echo "delete_user.php?id=".$fetch['id']; ?>> <button type="button" class="btn btn-danger">Delete</button> </a></td>
+                    <td> <a href='#'><button type="button" class="btn btn-info">Forgot Password</button></a></td>
+                    <td> <a href=<?php echo "edit_user.php?id=".$fetch['id']; ?>> <button type="button" class="btn btn-primary">Edit</button> </a></td>
+
                   </tr>
               <?php } ?>
-
               </tbody>
             </table>
             <?php
-            $pr_query="SELECT * from exampur_special";
+            $pr_query="SELECT * from user WHERE datetime!='0000-00-00 00:00:00'";
             $pr_result=mysqli_query($ses,$pr_query);
             $total_record=mysqli_num_rows($pr_result);
             $total_page=ceil($total_record/$num_per_page);
             if ($page>1) {
-              echo "<a href='exampuredit.php?page=".($page-1)."'class='btn btn-primary'>Previous</a>";
+              echo "<a href='user.php?page=".($page-1)."'class='btn btn-primary'>Previous</a>";
             }
             for ($i=1; $i <=$total_page ; $i++) {
-              echo "<a href='exampuredit.php?page=".$i."'class='btn btn-info'>$i</a>";
+              echo "<a href='user.php?page=".$i."'class='btn btn-info'>$i</a>";
             }
             if ($i-1>$page) {
-              echo "<a href='exampuredit.php?page=".($page+1)."'class='btn btn-primary'>Next</a>";
+              echo "<a href='user.php?page=".($page+1)."'class='btn btn-primary'>Next</a>";
             }
             echo '<hr>';
             echo "Page-".$page;

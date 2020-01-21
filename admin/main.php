@@ -82,6 +82,13 @@
                   <a href="subject.php">Edit Subject</a>
                 </div>
           </li>
+          <li>
+              <a href="purchases.php"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Purchases </a>
+          </li>
+          <li>
+              <a href="user.php"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users </a>
+          </li>
+
              <li>
                  <a href="study_material.php"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Study Material </a>
              </li>

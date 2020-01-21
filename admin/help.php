@@ -8,8 +8,8 @@ if (isset($_GET['page'])) {
 else {
   $page=1;
 }
-$num_per_page=02;
-$start_from=($page-1)*02;
+$num_per_page=10;
+$start_from=($page-1)*10;
 $query=mysqli_query($ses,"SELECT * FROM help WHERE flag=0 ORDER BY id DESC LIMIT $start_from,$num_per_page");
 
 

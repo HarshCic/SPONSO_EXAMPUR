@@ -7,8 +7,8 @@ if (isset($_GET['page'])) {
 else {
   $page=1;
 }
-$num_per_page=02;
-$start_from=($page-1)*02;
+$num_per_page=10;
+$start_from=($page-1)*10;
 
 ?>
 <?php
@@ -78,7 +78,6 @@ $query=mysqli_query($ses,"SELECT * FROM concept ORDER BY id DESC LIMIT $start_fr
                     <td> <a href=<?php echo "edit_concept.php?id=".$fetch['id']; ?>><button type="button" class="btn btn-info">Edit</button></a></td>
                   </tr>
               <?php } ?>
-
               </tbody>
             </table>
             <?php

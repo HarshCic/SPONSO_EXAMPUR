@@ -12,7 +12,7 @@ $start_from=($page-1)*10;
 
 ?>
 <?php
-$query=mysqli_query($ses,"SELECT * FROM exampur_special ORDER BY id DESC LIMIT $start_from,$num_per_page ") or die($query); ?>
+$query=mysqli_query($ses,"SELECT purchase.id,user_id,purchase.datetime,name,email,phone,transaction_id,item_type FROM purchase,user WHERE purchase.user_id=user.id && transaction_id!='0' ORDER BY purchase.id DESC LIMIT $start_from,$num_per_page ") or die($query); ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -36,15 +36,15 @@ $query=mysqli_query($ses,"SELECT * FROM exampur_special ORDER BY id DESC LIMIT $
 
   </head>
   <body>
-       <?php include 'main.php'; ?>
-
+          <!-- /#sidebar-wrapper -->
+          <?php include 'main.php'; ?>
           <!-- Page Content -->
           <div id="page-content-wrapper">
               <div class="container-fluid">
                   <div class="row">
                       <div class="col-lg-12 jumbotron">
                         <br>
-                        <h1>Exampur Videos..</h1>
+                        <h1>Purchases..</h1>
                       </div>
                   </div>
 
@@ -58,12 +58,18 @@ $query=mysqli_query($ses,"SELECT * FROM exampur_special ORDER BY id DESC LIMIT $
             <table class="table table-striped table-bordered">
               <thead>
                 <tr>
-                  <th>Link</th>
-                  <th>Title</th>
-                  <th>Live Status</th>
-                  <th>Download Link</th>
+
+                  <th>User ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Transaction ID</th>
+                  <th>Item Type</th>
+                  <th>Date & Time</th>
                   <th>Delete</th>
-                  <th>Edit</th>
+
+
+
 
                 </tr>
               </thead>
@@ -71,40 +77,42 @@ $query=mysqli_query($ses,"SELECT * FROM exampur_special ORDER BY id DESC LIMIT $
                 <?php while ($fetch=mysqli_fetch_array($query)) { ?>
 
                   <tr>
-                    <td><a href=<?php echo $fetch['link']?>><?php echo $fetch['link']?></a></td>
-                    <td><?php echo $fetch['title'] ?></td>
-                    <td><?php if ($fetch['live_status']==0) {
 
-                      echo "Live";
+                    <td><?php echo $fetch['user_id'] ?></td>
+                    <td><?php echo $fetch['name'] ?></td>
+                    <td><?php echo $fetch['email'] ?></td>
+                    <td><?php echo $fetch['phone'] ?></td>
+                    <td><?php echo $fetch['transaction_id'] ?></td>
+                    <td><?php $type=$fetch['item_type'];
+                    if ($type==1) {
+                      echo "Course";
                     }
-                    elseif ($fetch['live_status']==1) {
-                        echo "Class Recorded";
+                    elseif ($type==2) {
+                      echo "Study Material";
                     }
                     else {
-
-                        echo "Upcoming Class";
-                    } ?></td>
-                    <td><a href=<?php echo $fetch['download_link']?>> <?php echo $fetch['download_link'] ?></a></td>
-                    <td> <a href=<?php echo "delete_exampur.php?id=".$fetch['id']; ?>> <button type="button" class="btn btn-danger">Delete</button> </a></td>
-                    <td> <a href=<?php echo "edit_exampur_video.php?id=".$fetch['id']; ?>><button type="button" class="btn btn-info">Edit</button></a></td>
+                      echo "Test Series";
+                    }
+                    ?></td>
+                    <td><?php echo $fetch['datetime'] ?></td>
+                    <td> <a href=<?php echo "delete_purchase.php?id=".$fetch['id']; ?>> <button type="button" class="btn btn-danger">Delete</button> </a></td>
                   </tr>
               <?php } ?>
-
               </tbody>
             </table>
             <?php
-            $pr_query="SELECT * from exampur_special";
+            $pr_query="SELECT user_id,purchase.datetime,name,email,phone,transaction_id,item_type FROM purchase,user WHERE purchase.user_id=user.id";
             $pr_result=mysqli_query($ses,$pr_query);
             $total_record=mysqli_num_rows($pr_result);
             $total_page=ceil($total_record/$num_per_page);
             if ($page>1) {
-              echo "<a href='exampuredit.php?page=".($page-1)."'class='btn btn-primary'>Previous</a>";
+              echo "<a href='purchases.php?page=".($page-1)."'class='btn btn-primary'>Previous</a>";
             }
             for ($i=1; $i <=$total_page ; $i++) {
-              echo "<a href='exampuredit.php?page=".$i."'class='btn btn-info'>$i</a>";
+              echo "<a href='purchases.php?page=".$i."'class='btn btn-info'>$i</a>";
             }
             if ($i-1>$page) {
-              echo "<a href='exampuredit.php?page=".($page+1)."'class='btn btn-primary'>Next</a>";
+              echo "<a href='purchases.php?page=".($page+1)."'class='btn btn-primary'>Next</a>";
             }
             echo '<hr>';
             echo "Page-".$page;
