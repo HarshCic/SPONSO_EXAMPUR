@@ -1,0 +1,15 @@
+[23-Jan-2020 07:05:42 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 17
+[23-Jan-2020 07:05:42 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 21
+[23-Jan-2020 07:05:47 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 17
+[23-Jan-2020 07:05:47 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 21
+[23-Jan-2020 07:05:54 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 17
+[23-Jan-2020 07:05:54 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 21
+[23-Jan-2020 07:05:59 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 17
+[23-Jan-2020 07:05:59 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 21
+[23-Jan-2020 07:06:04 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 17
+[23-Jan-2020 07:06:04 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 21
+[23-Jan-2020 07:06:29 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 17
+[23-Jan-2020 07:06:29 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 21
+[23-Jan-2020 07:07:03 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 17
+[23-Jan-2020 07:07:03 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 21
+[24-Jan-2020 17:41:07 Asia/Calcutta] PHP Notice:  Undefined index: per_cat_id in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 38
