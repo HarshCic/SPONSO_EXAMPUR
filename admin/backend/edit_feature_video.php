@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					
 					<div class="form-group">
                   <label for="link">Link</label>
-                  <input type="text" class="form-control" name="link" aria-describedby="link" placeholder="youtube.com" value='<?php echo $fetch["link"]?>' required>
+                  <input type="url" class="form-control" name="link" aria-describedby="link" placeholder="youtube.com" value='<?php echo $fetch["link"]?>' required>
 
                 </div>
                 <div class="form-group">
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="form-group">
                   <label for="download_link">Download Link</label>
-                  <input type="text" class="form-control" value='<?php echo $fetch["download_link"] ?>' name="download_link" placeholder="Paste the download link here.." required>
+                  <input type="url" class="form-control" value='<?php echo $fetch["download_link"] ?>' name="download_link" placeholder="Paste the download link here.." required>
                 </div>
 				  </div>
 				  <!-- /.box-body -->

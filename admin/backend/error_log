@@ -447,3 +447,34 @@ Stack trace:
 [24-Jan-2020 17:30:56 Asia/Calcutta] PHP Warning:  mysqli_query(): Empty query in /home/zx9dj0rx0w3j/public_html/admin/admin/resetpassword.php on line 6
 [24-Jan-2020 17:31:09 Asia/Calcutta] PHP Notice:  Undefined variable: sql in /home/zx9dj0rx0w3j/public_html/admin/admin/resetpassword.php on line 6
 [24-Jan-2020 17:31:09 Asia/Calcutta] PHP Warning:  mysqli_query(): Empty query in /home/zx9dj0rx0w3j/public_html/admin/admin/resetpassword.php on line 6
+[24-Jan-2020 21:46:11 Asia/Calcutta] PHP Notice:  Undefined index: permissions in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 6
+[24-Jan-2020 21:46:11 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 74
+[24-Jan-2020 21:46:11 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 81
+[24-Jan-2020 21:46:11 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 108
+[25-Jan-2020 00:04:24 Asia/Calcutta] PHP Notice:  Undefined index: permissions in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 6
+[25-Jan-2020 00:04:24 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 74
+[25-Jan-2020 00:04:24 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 81
+[25-Jan-2020 00:04:24 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 108
+[25-Jan-2020 00:10:21 Asia/Calcutta] PHP Notice:  Undefined variable: i in /home/zx9dj0rx0w3j/public_html/admin/backend/currentaffairlist.php on line 46
+[25-Jan-2020 09:23:27 Asia/Calcutta] PHP Notice:  Undefined index: permissions in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 6
+[25-Jan-2020 09:23:27 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 74
+[25-Jan-2020 09:23:27 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 81
+[25-Jan-2020 09:23:27 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 108
+[25-Jan-2020 11:37:30 Asia/Calcutta] PHP Notice:  Undefined variable: i in /home/zx9dj0rx0w3j/public_html/admin/backend/currentaffairlist.php on line 46
+[25-Jan-2020 11:38:41 Asia/Calcutta] PHP Notice:  Undefined variable: sql in /home/zx9dj0rx0w3j/public_html/admin/backend/resetpassword.php on line 6
+[25-Jan-2020 11:38:41 Asia/Calcutta] PHP Warning:  mysqli_query(): Empty query in /home/zx9dj0rx0w3j/public_html/admin/backend/resetpassword.php on line 6
+[25-Jan-2020 11:38:42 Asia/Calcutta] PHP Notice:  Undefined variable: sql in /home/zx9dj0rx0w3j/public_html/admin/backend/resetpassword.php on line 6
+[25-Jan-2020 11:38:42 Asia/Calcutta] PHP Warning:  mysqli_query(): Empty query in /home/zx9dj0rx0w3j/public_html/admin/backend/resetpassword.php on line 6
+[25-Jan-2020 12:34:06 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 5
+[25-Jan-2020 12:34:06 Asia/Calcutta] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 6
+[25-Jan-2020 12:34:06 Asia/Calcutta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 7
+[25-Jan-2020 12:34:14 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 5
+[25-Jan-2020 12:34:14 Asia/Calcutta] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 6
+[25-Jan-2020 12:34:14 Asia/Calcutta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 7
+[25-Jan-2020 12:39:38 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 5
+[25-Jan-2020 12:39:38 Asia/Calcutta] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 6
+[25-Jan-2020 12:39:38 Asia/Calcutta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 7
+[25-Jan-2020 12:42:29 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 5
+[25-Jan-2020 12:42:29 Asia/Calcutta] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 6
+[25-Jan-2020 12:42:29 Asia/Calcutta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 7
+[25-Jan-2020 13:18:43 Asia/Calcutta] PHP Notice:  Undefined variable: i in /home/zx9dj0rx0w3j/public_html/admin/backend/currentaffairlist.php on line 46

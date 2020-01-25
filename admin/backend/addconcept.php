@@ -1,5 +1,6 @@
 <?php
 	include 'header.php';
+  $serverimage=$GLOBALS['serverimage'];
 $msg='';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (isset($_POST['upload'])) {
@@ -10,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   	// image file directory
   	$target = "../images_concept/".basename($image);
-
-  	$sql = "INSERT INTO concept (concept_logo, concept_name) VALUES ('$image', '$image_text')";
+    $conceptimage=$GLOBALS['serverimage']."images_concept/".basename($image);
+  	$sql = "INSERT INTO concept (concept_logo, concept_name) VALUES ('$conceptimage', '$image_text')";
   	// execute query
   	mysqli_query($ses, $sql);
   	if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
@@ -51,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <!-- form start -->
             <form method="POST" action="" enctype="multipart/form-data">
               <div class="box-body">
-                <?php if($msg!='') { ?>
+                <?php  if($msg!='') { ?>
 				 <div class="form-group">
 					<div class="alert alert-success"><?php echo $msg; ?></div>
 				 </div>

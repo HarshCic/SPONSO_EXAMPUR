@@ -23,15 +23,15 @@ $mymsg='';
 		$username=$_POST['username'];
 
 		$target = "../images_user/".basename($image);
-
+		$userimage=$GLOBALS['serverimage']."images_user/".basename($image);
 		if($_POST['password']!="" && $image!=""){
 			$password=$_POST['password'];
-			$sql = "UPDATE user SET photo='$image',name='$name',email='$email',phone='$phone',username='$username',password='$password' WHERE id='$id'";
+			$sql = "UPDATE user SET photo='$userimage',name='$name',email='$email',phone='$phone',username='$username',password='$password' WHERE id='$id'";
 		}else if($_POST['password']!="" && $image==""){
 			$password=$_POST['password'];
 			$sql = "UPDATE user SET name='$name',email='$email',phone='$phone',username='$username',password='$password' WHERE id='$id'";
 		}else if($_POST['password']=="" && $image!=""){
-			$sql = "UPDATE user SET photo='$image',name='$name',email='$email',phone='$phone',username='$username' WHERE id='$id'";
+			$sql = "UPDATE user SET photo='$userimage',name='$name',email='$email',phone='$phone',username='$username' WHERE id='$id'";
 		}else{
 			$sql = "UPDATE user SET name='$name',email='$email',phone='$phone',username='$username' WHERE id='$id'";
 		}
@@ -182,7 +182,7 @@ $mymsg='';
 
 					   <label for="title">Previous Photo</label>
 
-					   <a class="form-control" href=<?php echo '../images_user/'.$fetch['photo']?>><?php echo $fetch['photo'] ?></a>
+					   <a class="form-control" href=<?php echo $fetch['photo']?>><?php echo $fetch['photo'] ?></a>
 
 
 

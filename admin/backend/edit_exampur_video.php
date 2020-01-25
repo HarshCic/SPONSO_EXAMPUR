@@ -110,7 +110,7 @@ $mymsg='';
 
                   <label for="exampleInputEmail1">Link </label>
 
-                  <input type="text" class="form-control" name="link" aria-describedby="link" value=<?php echo $fetch['link'] ?> placeholder="youtube.com" required>
+                  <input type="url" class="form-control" name="link" aria-describedby="link" value=<?php echo $fetch['link'] ?> placeholder="youtube.com" required>
 
                 </div>
 
@@ -118,7 +118,7 @@ $mymsg='';
 
                   <label for="title">Title</label>
 
-                  <input type="text" class="form-control" name="title" value=<?php echo $fetch['title'] ?> placeholder="Include the title of Video" required>
+                  <input type="text" class="form-control" name="title" value="<?php echo $fetch['title'] ?>" placeholder="Include the title of Video" required>
 
                 </div>
 
@@ -142,7 +142,7 @@ $mymsg='';
 
                   <label for="download_link">Download Link</label>
 
-                  <input type="text" class="form-control" name="download_link" value=<?php echo $fetch['dowload_link'] ?> placeholder="Paste the download link here.." required>
+                  <input type="url" class="form-control" name="download_link" value=<?php echo $fetch['dowload_link'] ?> placeholder="Paste the download link here.." required>
 
                 </div>
 

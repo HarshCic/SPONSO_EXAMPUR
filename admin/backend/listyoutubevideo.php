@@ -1,0 +1,161 @@
+<?php include 'header.php';
+
+include '../functions/youtubevideofun.php';
+
+$list_youtube_videos=list_youtube_videos();
+
+?>
+
+<!-- Content Wrapper. Contains page content -->
+
+  <div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+
+    <section class="content-header">
+
+      <h1>
+
+        List Youtube Videos
+
+        <small>Preview</small>
+
+      </h1>
+
+      <ol class="breadcrumb">
+
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+
+        <li><a href="#">List Youtube Videos</a></li>
+
+      </ol>
+
+    </section>
+
+
+
+    <!-- Main content -->
+
+    <section class="content">
+
+      <div class="row">
+
+		<div class="box">
+
+            <!-- /.box-header -->
+
+            <div class="box-body">
+
+
+
+				<div class="col-md-12 table-responsive">
+
+					<table class="table table-bordered datatable example table-striped">
+
+						<thead>
+
+							<tr>
+
+                <th>Sr no.</th>
+
+								<th>Title</th>
+
+								<th>Type</th>
+
+                <th>Link</th>
+
+                <th>Status</th>
+
+                <th>Download Link</th>
+
+								<th>Delete</th>
+
+								<th>Edit</th>
+
+							</tr>
+
+						</thead>
+
+						<tbody>
+
+							<?php
+
+              $i=1;
+
+							while($fetch =  mysqli_fetch_array($list_youtube_videos,MYSQLI_ASSOC))
+
+							{
+
+								?>
+
+								<tr>
+
+                  <td><?php echo $i; ?></td>
+
+									<td><?php echo $fetch['Title'] ?></td>
+
+                  <td><?php echo $fetch['material_type'] ?></td>
+
+									<td><a href=<?php echo $fetch['file_link'];?>> <?php echo $fetch['file_link'] ?></a></td>
+
+                  <td><?php if ($fetch['live_status']==1) {
+                     echo "Live";
+
+                     }
+
+                     elseif ($fetch['live_status']==2) {
+
+                     echo "Recorded";
+
+                     }
+
+                     else {
+
+
+
+                     echo "Upcoming";
+
+                     } ?></td>
+
+                  <td><a href=<?php echo $fetch['download_link'];?>> <?php echo $fetch['download_link'] ?></a></td>
+
+
+									<td> <a href=<?php echo "delete_youtube_video.php?id=".$fetch['id']; ?>> <button type="button" class="btn btn-danger">Delete</button> </a></td>
+
+									<td> <a href=<?php echo "edit_youtube_video.php?id=".$fetch['id']; ?>><button type="button" class="btn btn-info">Edit</button></a></td>
+
+								</tr>
+
+								<?php
+
+                $i++;
+
+							}
+
+							?>
+
+
+
+						</tbody>
+
+					</table>
+
+				</div>
+
+			</div>
+
+		</div>
+
+      </div>
+
+      <!-- /.row -->
+
+    </section>
+
+    <!-- /.content -->
+
+  </div>
+
+  <!-- /.content-wrapper -->
+
+  <?php include 'footer.php' ?>

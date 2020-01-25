@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $target = "../images_exam/" . basename($image);
 
 
-
-        $sql = "INSERT INTO exam (exam_logo, exam_name,exam_category) VALUES ('$image', '$image_text','$category')";
+        $examplogo=$GLOBALS['serverimage']."images_exam/".basename($image);
+        $sql = "INSERT INTO exam (exam_logo, exam_name,exam_category) VALUES ('$examplogo', '$image_text','$category')";
 
         // execute query
 

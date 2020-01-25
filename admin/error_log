@@ -13,3 +13,21 @@
 [23-Jan-2020 07:07:03 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 17
 [23-Jan-2020 07:07:03 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 21
 [24-Jan-2020 17:41:07 Asia/Calcutta] PHP Notice:  Undefined index: per_cat_id in /home/zx9dj0rx0w3j/public_html/admin/index.php on line 38
+[25-Jan-2020 12:34:23 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 5
+[25-Jan-2020 12:34:23 Asia/Calcutta] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 6
+[25-Jan-2020 12:34:23 Asia/Calcutta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 7
+[25-Jan-2020 12:34:48 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 5
+[25-Jan-2020 12:34:48 Asia/Calcutta] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 6
+[25-Jan-2020 12:34:48 Asia/Calcutta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 7
+[25-Jan-2020 12:35:09 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 5
+[25-Jan-2020 12:35:09 Asia/Calcutta] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 6
+[25-Jan-2020 12:35:09 Asia/Calcutta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 7
+[25-Jan-2020 12:36:39 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 5
+[25-Jan-2020 12:36:39 Asia/Calcutta] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 6
+[25-Jan-2020 12:36:39 Asia/Calcutta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 7
+[25-Jan-2020 12:37:05 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 5
+[25-Jan-2020 12:37:05 Asia/Calcutta] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 6
+[25-Jan-2020 12:37:05 Asia/Calcutta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 7
+[25-Jan-2020 12:38:02 Asia/Calcutta] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 5
+[25-Jan-2020 12:38:02 Asia/Calcutta] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 6
+[25-Jan-2020 12:38:02 Asia/Calcutta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 7

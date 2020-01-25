@@ -24,7 +24,7 @@
 						<table class="table table-bordered datatable example table-striped">
 							<thead>
 								<tr>
-									<th>Sr No</th>
+									<th>#</th>
 									<th>Title</th>
 									<th>PDF Link</th>
 									<th>Type</th>

@@ -82,7 +82,7 @@
 
               <label for="exampleInputEmail1">Link </label>
 
-              <input type="text" class="form-control" name="link" aria-describedby="link" placeholder="youtube.com" required>
+              <input type="url" class="form-control" name="link" aria-describedby="link" placeholder="youtube.com" required>
 
             </div>
 
@@ -114,7 +114,7 @@
 
               <label for="download_link">Download Link</label>
 
-              <input type="text" class="form-control" name="download_link" placeholder="Paste the download link here.." required>
+              <input type="url" class="form-control" name="download_link" placeholder="Paste the download link here.." required>
 
             </div>
 

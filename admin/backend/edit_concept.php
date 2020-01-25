@@ -25,8 +25,8 @@ $mymsg='';
     $target = "../images_concept/".basename($image);
 
 
-
-    $sql = "UPDATE concept SET concept_name='$image_text',concept_logo='$image' WHERE id='$id'";
+    $conceptimage=$GLOBALS['serverimage']."images_concept/".basename($image);
+    $sql = "UPDATE concept SET concept_name='$image_text',concept_logo='$conceptimage' WHERE id='$id'";
 
     // execute query
 
@@ -134,7 +134,7 @@ $mymsg='';
 
                    <label for="title">Existing Logo</label>
 
-                   <a class="form-control" href=<?php echo '../images_concept/'.$fetch['concept_logo']?>><?php echo $fetch['concept_logo'] ?></a>
+                   <a class="form-control" href=<?php echo $fetch['concept_logo']?>><?php echo $fetch['concept_logo'] ?></a>
 
 
 

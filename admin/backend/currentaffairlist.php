@@ -33,6 +33,7 @@ $query=list_currentaffair($status);
             <table class="table table-bordered datatable example table-striped">
               <thead>
                 <tr>
+                  <th>#</th>
                   <th>Title</th>
                   <th>PDF Link</th>
                   <th>Type</th>
@@ -41,8 +42,14 @@ $query=list_currentaffair($status);
                 </tr>
               </thead>
               <tbody>
-                <?php while ($fetch=mysqli_fetch_array($query,MYSQLI_ASSOC)) { ?>
+                <?php
+                  $i++; 
+                  while ($fetch=mysqli_fetch_array($query,MYSQLI_ASSOC)) { 
+                ?>
                 <tr>
+                  <th>
+                    <?php echo $i++; ?>
+                  </th>
                   <td>
                     <?php echo $fetch['title'] ?>
                   </td>

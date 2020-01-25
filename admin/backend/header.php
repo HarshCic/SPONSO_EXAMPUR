@@ -2,7 +2,7 @@
    include '../database/config.php';
    if(!isset($_SESSION['login_user'])){
      header("location: ../index.php");
-   }   
+   }
    $permissions=$_SESSION['permissions'];
    if($permissions!=''){
       $permissions=explode(',',$permissions);
@@ -109,7 +109,7 @@
                   <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                </div>
             </div>
-            
+
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
@@ -162,8 +162,8 @@
                         <li><a href="listconcept.php"><i class="fa fa-circle-o"></i> List Concept </a></li>
                      </ul>
                   </li>
-               <?php } ?>  
-               <?php if(in_array(4,$permissions)){ ?> 
+               <?php } ?>
+               <?php if(in_array(4,$permissions)){ ?>
                <li class=" treeview">
                   <a href="#">
                   <i class="fa fa-edit"></i> <span>Exam </span>
@@ -201,7 +201,7 @@
                      </a>
                      <ul class="treeview-menu">
                         <li><a href="addcurrentaffair.php"><i class="fa fa-circle-o"></i> Add Current Affair  </a></li>
-                        
+
                         <li><a href="currentaffairlist.php?status=1"><i class="fa fa-circle-o"></i> Daily  Current Affair </a></li>
                         <li><a href="currentaffairlist.php?status=2"><i class="fa fa-circle-o"></i> Monthly Current Affair </a></li>
                      </ul>
@@ -215,7 +215,7 @@
                      </span>
                      </a>
                   </li>
-               <?php } ?>   
+               <?php } ?>
                <?php if(in_array(8,$permissions)){ ?>
                   <li>
                      <a href="users.php">
@@ -224,8 +224,8 @@
                      </span>
                      </a>
                   </li>
-               <?php } ?>  
-               <?php if(in_array(9,$permissions)){ ?>                
+               <?php } ?>
+               <?php if(in_array(9,$permissions)){ ?>
                   <li class=" treeview">
                      <a href="#">
                      <i class="fa fa-folder-open"></i> <span>Study Material </span>
@@ -249,7 +249,43 @@
                      </span>
                      </a>
                   </li>
-               <?php } ?>   
+               <?php } ?>
+               <?php if(in_array(12,$permissions)){ ?>
+                  <li class=" treeview">
+                     <a href="#">
+                     <i class="fa fa-file-text"></i> <span>Topics </span>
+                     <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                     </span>
+                     </a>
+                     <ul class="treeview-menu">
+                        <li><a href="addtopic.php"><i class="fa fa-circle-o"></i> Add Topics  </a></li>
+                        <li><a href="listtopic.php"><i class="fa fa-circle-o"></i> List Topics </a></li>
+                     </ul>
+                  </li>
+               <?php } ?>
+
+              <!--  Youtube Class -->
+
+              <?php if(in_array(11,$permissions)){ ?>
+                 <li class=" treeview">
+                    <a href="#">
+                    <i class="fa fa-file-text"></i> <span>Youtube Class </span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                       <li><a href="addpdf.php"><i class="fa fa-circle-o"></i> Add PDF  </a></li>
+
+                       <li><a href="addyoutubevideo.php"><i class="fa fa-circle-o"></i> Add Video  </a></li>
+                       <li><a href="listpdf.php"><i class="fa fa-circle-o"></i> List PDFs </a></li>
+                       <li><a href="listyoutubevideo.php"><i class="fa fa-circle-o"></i> List Videos </a></li>
+                    </ul>
+                 </li>
+              <?php } ?>
+
+              <!-- Signout -->
                <li >
                   <a href="signout.php">
                   <i class="fa fa-sign-in"></i> <span>Sign Out </span>

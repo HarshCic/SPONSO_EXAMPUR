@@ -7,6 +7,7 @@
     $title=$_POST['title'];
     $status=$_POST['status'];
     $download_link=$_POST['download_link'];
+    
     add_featuredvideo($link,$title,$status,$download_link);
     ?>
     <script type="text/javascript">
@@ -46,7 +47,7 @@
               <?php } ?>
               <div class="form-group">
                 <label for="link">Link</label>
-                <input type="text" class="form-control" name="link" aria-describedby="link" placeholder="youtube.com" required>
+                <input type="url" class="form-control" name="link" aria-describedby="link" placeholder="https://www.youtube.com/" required>
               </div>
               <div class="form-group">
                 <label for="title">Title</label>
@@ -62,7 +63,11 @@
               </div>
               <div class="form-group">
                 <label for="download_link">Download Link</label>
-                <input type="text" class="form-control" name="download_link" placeholder="Paste the download link here.." required>
+                <input type="url" class="form-control" name="download_link" placeholder="Paste the download link here.." required>
+              </div>
+              <div class="form-group">
+                <label for="download_link">Date and time</label>
+                <input type="text" class="form-control" name="date_and_time" placeholder="25-01-2020 at 01:26 AM" required>
               </div>
 				    </div>
             <!-- /.box-body -->

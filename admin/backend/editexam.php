@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $target = "../images_exam/" . basename($image);
 
 
-
-        $sql = "UPDATE exam SET exam_name='$image_text',exam_logo='$image',exam_category='$category' WHERE id='$id'";
+        $examimage=$GLOBALS['serverimage']."images_exam/".basename($image);
+        $sql = "UPDATE exam SET exam_name='$image_text',exam_logo='$examimage',exam_category='$category' WHERE id='$id'";
 
         // execute query
 
@@ -154,7 +154,7 @@ else
 
                    <label for="title">Existing Logo</label>
 
-                   <a class="form-control" href=<?php echo '../images_exam/' . $fetch['exam_logo'] ?>><?php echo $fetch['exam_logo'] ?></a>
+                   <a class="form-control" href=<?php echo $fetch['exam_logo'] ?>><?php echo $fetch['exam_logo'] ?></a>
 
 
 
