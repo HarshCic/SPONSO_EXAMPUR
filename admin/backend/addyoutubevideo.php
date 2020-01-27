@@ -15,6 +15,10 @@ $msg='';
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	$date=date('d-m-Y');
+	$currentDateTime=date('Y-m-d H:i:s');
+	$newDateTime = date('h:i A', strtotime($currentDateTime));
+	$mydate=$date." at ".$newDateTime;
 
 	$video_link=$_POST['link'];
 
@@ -34,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $download_link=$_POST['download_link'];
 
-	$query="INSERT into youtube_class(Title,material_type,file_link,live_status,exam_id,subject,topic,concept,download_link) values  ('".$title."','".$type."','".$video_link."','".$status."','".$exam_id."','".$subject_id."','".$topic_id."','".$concept_id."','".$download_link."')";
+	$query="INSERT into youtube_class(Title,material_type,file_link,live_status,exam_id,subject,topic,concept,date_and_time,download_link) values  ('".$title."','".$type."','".$video_link."','".$status."','".$exam_id."','".$subject_id."','".$topic_id."','".$concept_id."','".$mydate."','".$download_link."')";
 
 	$result=mysqli_query($ses,$query);
 
@@ -127,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 					  <select class="form-control" name="type" required>
 
-						<option value="Video">Video</option>
+						<option value="VIDEO">Video</option>
 
 
 

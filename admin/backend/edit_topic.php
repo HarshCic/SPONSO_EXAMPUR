@@ -8,6 +8,15 @@ include 'header.php';
 
 $id=$_GET['id'];
 
+  $sql = "SELECT * FROM `topic`  ";
+  $subject=mysqli_query($ses, $sql);
+  $max=array();
+  while($row=mysqli_fetch_array($subject, MYSQLI_ASSOC)) 
+  {
+    $arryarraytitlesub = array();
+    $arraytitle = $row['topic_name'];
+    array_push($max,$arraytitle);
+  }
 
 
 $mymsg='';
@@ -312,7 +321,7 @@ $mymsg='';
 
 
 
-                   <input type="text" class="form-control" name="image_text" value=<?php echo $fetch['topic_name'] ?> required>
+                   <input type="text" id="title" class="form-control" name="image_text" value=<?php echo $fetch['topic_name'] ?> required>
 
 
 
@@ -382,3 +391,12 @@ $mymsg='';
 
   <?php include 'footer.php' ?>
 
+  <script>
+    allsub=<?php echo json_encode($max);?>;
+    $(document).ready(function(){
+      $( "#title" ).autocomplete({
+        source: allsub
+      });  
+    });
+      
+  </script>

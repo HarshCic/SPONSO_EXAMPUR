@@ -2,6 +2,14 @@
 include 'header.php';
 $id=$_GET['id'];
 $mymsg='';
+$sql = "SELECT * FROM `featured_video`  ";
+$allfeatures=mysqli_query($ses, $sql);
+$maxtitle=array();
+while($row=mysqli_fetch_array($allfeatures, MYSQLI_ASSOC)) 
+{
+  array_push($maxtitle,$row['title']);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $link=$_POST['link'];
     $title=$_POST['title'];
@@ -57,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="form-group">
                   <label for="title">Title</label>
-                  <input type="text" class="form-control" name="title" value='<?php echo $fetch["title"]?>' placeholder="Include the title of Video" required>
+                  <input type="text" class="form-control" id="titles" name="title" value='<?php echo $fetch["title"]?>' placeholder="Include the title of Video" required>
                 </div>
                 <div class="form-group">
                   <label for="status">Live Status</label>
@@ -87,3 +95,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </div>
   <!-- /.content-wrapper -->
   <?php include 'footer.php' ?>
+<script>
+  titles=<?php echo json_encode($maxtitle);?>;
+  $(document).ready(function(){
+    $( "#titles" ).autocomplete({
+      source: titles
+    });  
+  });
+    
+</script>

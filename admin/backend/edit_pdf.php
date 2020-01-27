@@ -4,13 +4,13 @@ include '../functions/examlistfun.php';
 include '../functions/conceptfun.php';
 include '../functions/topicfun.php';
 include '../functions/subjectfun.php';
-include '../functions/youtubevideofun.php';
+include '../functions/youtubepdffun.php';
 
 $list_exam = list_exams();
 $list_subject=list_subjects();
 $list_topic=list_topics();
 $list_concept=list_conceptfun();
-$list_youtube_video=list_youtube_videos();
+$list_pdf=list_youtube_pdf();
 
 $id=$_GET['id'];
 

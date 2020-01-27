@@ -3,7 +3,13 @@
 include 'header.php';
 
 $id=$_GET['id'];
-
+$sql = "SELECT * FROM `exampur_special`  ";
+$allexampurtitles=mysqli_query($ses, $sql);
+$maxtitle=array();
+while($row=mysqli_fetch_array($allexampurtitles, MYSQLI_ASSOC)) 
+{
+  array_push($maxtitle,$row['title']);
+} 
 $mymsg='';
 
  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -110,7 +116,7 @@ $mymsg='';
 
                   <label for="exampleInputEmail1">Link </label>
 
-                  <input type="url" class="form-control" name="link" aria-describedby="link" value=<?php echo $fetch['link'] ?> placeholder="youtube.com" required>
+                  <input type="url" class="form-control" name="link" aria-describedby="link" value="<?php echo $fetch['link'] ?>" placeholder="youtube.com" required>
 
                 </div>
 
@@ -118,7 +124,7 @@ $mymsg='';
 
                   <label for="title">Title</label>
 
-                  <input type="text" class="form-control" name="title" value="<?php echo $fetch['title'] ?>" placeholder="Include the title of Video" required>
+                  <input type="text" id="titles" class="form-control" name="title" value="<?php echo $fetch['title'] ?>" placeholder="Include the title of Video" required>
 
                 </div>
 
@@ -183,3 +189,12 @@ $mymsg='';
   <!-- /.content-wrapper -->
 
   <?php include 'footer.php' ?>
+<script>
+titles=<?php echo json_encode($maxtitle);?>;
+$(document).ready(function(){
+  $( "#titles" ).autocomplete({
+    source: titles
+  });  
+});
+  
+</script>

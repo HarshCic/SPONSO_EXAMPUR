@@ -13,6 +13,10 @@ $list_topic=list_topics();
 $list_concept=list_conceptfun();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	$date=date('d-m-Y');
+	$currentDateTime=date('Y-m-d H:i:s');
+	$newDateTime = date('h:i A', strtotime($currentDateTime));
+	$mydate=$date." at ".$newDateTime;
 
 	$pdf_link=$_POST['link'];
 
@@ -32,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $download_link=$_POST['download_link'];
 
-	$query="INSERT into youtube_class(Title,material_type,file_link,live_status,exam_id,subject,topic,concept,download_link) values  ('".$title."','".$type."','".$pdf_link."','".$status."','".$exam_id."','".$subject_id."','".$topic_id."','".$concept_id."','".$download_link."')";
+	$query="INSERT into youtube_class(Title,material_type,file_link,live_status,exam_id,subject,topic,concept,date_and_time,download_link) values  ('".$title."','".$type."','".$pdf_link."','".$status."','".$exam_id."','".$subject_id."','".$topic_id."','".$concept_id."','".$mydate."','".$download_link."')";
 
 	$result=mysqli_query($ses,$query);
 
@@ -140,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 					  <select class="form-control" name="exam" required>
 
               <?php
-              
+
                 while ($fetch = mysqli_fetch_array($list_exam, MYSQLI_ASSOC))
                 {
 

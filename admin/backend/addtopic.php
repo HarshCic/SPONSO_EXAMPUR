@@ -5,7 +5,15 @@
 <?php include 'header.php';
 
 
-
+  $sql = "SELECT * FROM `topic`  ";
+  $subject=mysqli_query($ses, $sql);
+  $max=array();
+  while($row=mysqli_fetch_array($subject, MYSQLI_ASSOC)) 
+  {
+    $arryarraytitlesub = array();
+    $arraytitle = $row['topic_name'];
+    array_push($max,$arraytitle);
+  }
 $msg='';
 
 
@@ -266,7 +274,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
-					  <input type="text" class="form-control" name="image_text" placeholder="Enter here..." required>
+					  <input type="text" id="title" class="form-control" name="image_text" placeholder="Enter here..." required>
 
 
 
@@ -340,3 +348,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   <?php include 'footer.php' ?>
 
+
+  <script>
+    allsub=<?php echo json_encode($max);?>;
+    $(document).ready(function(){
+      $( "#title" ).autocomplete({
+        source: allsub
+      });  
+    });
+      
+  </script>

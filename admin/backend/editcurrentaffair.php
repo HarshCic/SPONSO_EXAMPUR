@@ -1,6 +1,15 @@
 <?php
 include 'header.php';
 $id=$_GET['id'];
+$sql = "SELECT * FROM `current_affair`  ";
+$subject=mysqli_query($ses, $sql);
+$max=array();
+while($row=mysqli_fetch_array($subject, MYSQLI_ASSOC)) 
+{
+  $arryarraytitlesub = array();
+  $arraytitle = $row['title'];
+  array_push($max,$arraytitle);
+}
 $mymsg='';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title=$_POST['title'];
@@ -50,11 +59,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <?php } ?>
                 <div class="form-group">
                   <label for="title">Title</label>
-                  <input type="text" class="form-control" name="title" value='<?php echo $fetch["title"]?>' placeholder="Include the title of Video" required>
+                  <input type="text" id="title" class="form-control" name="title" value='<?php echo $fetch["title"]?>' placeholder="Include the title of Video" required>
                 </div>
                 <div class="form-group">
                   <label for="title">PDF Link</label>
-                  <input type="text" class="form-control" name="pdflink" value='<?php echo $fetch["pdf_link"]?>' placeholder="Include the title of Video" required>
+                  <input type="url" class="form-control" name="pdflink" value='<?php echo $fetch["pdf_link"]?>' placeholder="Include the title of Video" required>
                 </div>
                 <div class="form-group">
                   <label for="status">Type</label>
@@ -79,3 +88,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </div>
   <!-- /.content-wrapper -->
   <?php include 'footer.php' ?>
+
+  <script>
+    allsub=<?php echo json_encode($max);?>;
+    $(document).ready(function(){
+      $( "#title" ).autocomplete({
+        source: allsub
+      });  
+    });
+      
+  </script>

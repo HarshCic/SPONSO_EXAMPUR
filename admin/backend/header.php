@@ -41,6 +41,8 @@
       <!-- bootstrap wysihtml5 - text editor -->
       <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
       <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+<link rel="stylesheet" href="../dist/custom/css/jquery-ui.css">
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
       <!--[if lt IE 9]>
@@ -49,6 +51,7 @@
       <![endif]-->
       <!-- Google Font -->
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
    </head>
    <body class="hold-transition skin-blue sidebar-mini">
       <div class="wrapper">
@@ -149,6 +152,67 @@
                      </ul>
                   </li>
                <?php } ?>
+               <?php if(in_array(12,$permissions)){ ?>
+                  <li class="treeview">
+                     <a href="#">
+                     <i class="fa fa-video-camera"></i> <span>Live Course Class</span>
+                     <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                     </span>
+                     </a>
+                     <ul class="treeview-menu">
+                        <li><a href="addlivecoursepdf.php"><i class="fa fa-circle-o"></i> Add PDF </a></li>
+                        <li><a href="listlivecoursevideopdf.php?type=pdf"><i class="fa fa-circle-o"></i> List PDF</a></li>
+                        <li><a href="addlivecoursevideo.php"><i class="fa fa-circle-o"></i> Add Video </a></li>
+                        <li><a href="listlivecoursevideopdf.php?type=video"><i class="fa fa-circle-o"></i> List Video</a></li>
+                     </ul>
+                  </li>
+               <?php } ?>
+               <?php if(in_array(15,$permissions)){ ?>
+                  <li class="treeview">
+                     <a href="#">
+                     <i class="fa fa-video-camera"></i> <span>Youtube Class</span>
+                     <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                     </span>
+                     </a>
+                     <ul class="treeview-menu">
+                        <li><a href="addpdf.php"><i class="fa fa-circle-o"></i> Add PDF </a></li>
+                        <li><a href="listpdf.php"><i class="fa fa-circle-o"></i> List PDF</a></li>
+                        <li><a href="addyoutubevideo.php"><i class="fa fa-circle-o"></i> Add Video </a></li>
+                        <li><a href="listyoutubevideo.php"><i class="fa fa-circle-o"></i> List Video</a></li>
+                     </ul>
+                  </li>
+               <?php } ?>
+               <?php if(in_array(16,$permissions)){ ?>
+                  <li class=" treeview">
+                     <a href="#">
+                     <i class="fa fa-laptop"></i> <span>Test Series </span>
+                     <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                     </span>
+                     </a>
+                     <ul class="treeview-menu">
+                        <li><a href="add_testseries.php"><i class="fa fa-circle-o"></i> Add Test Series  </a></li>
+                        <li><a href="list_testseries.php"><i class="fa fa-circle-o"></i> List Test Series </a></li>
+                     </ul>
+                  </li>
+               <?php } ?>
+
+               <?php if(in_array(14,$permissions)){ ?>
+                  <li class=" treeview">
+                     <a href="#">
+                     <i class="fa fa-laptop"></i> <span>Course </span>
+                     <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                     </span>
+                     </a>
+                     <ul class="treeview-menu">
+                        <li><a href="addcourse.php"><i class="fa fa-circle-o"></i> Add Course  </a></li>
+                        <li><a href="listcourse.php"><i class="fa fa-circle-o"></i> List Course </a></li>
+                     </ul>
+                  </li>
+               <?php } ?>
                <?php if(in_array(3,$permissions)){ ?>
                   <li class=" treeview">
                      <a href="#">
@@ -176,6 +240,20 @@
                      <li><a href="examlist.php"><i class="fa fa-circle-o"></i> List Exam </a></li>
                   </ul>
                </li>
+               <?php } ?>
+               <?php if(in_array(4,$permissions)){ ?>
+                  <li class=" treeview">
+                     <a href="#">
+                     <i class="fa fa-paper-plane-o"></i> <span>Test </span>
+                     <span class="pull-right-container">
+                     <i class="fa fa-angle-left pull-right"></i>
+                     </span>
+                     </a>
+                     <ul class="treeview-menu">
+                        <li><a href="addtest.php"><i class="fa fa-circle-o"></i> Add Test </a></li>
+                        <li><a href="listtest.php"><i class="fa fa-circle-o"></i> List Test </a></li>
+                     </ul>
+                  </li>
                <?php } ?>
                <?php if(in_array(5,$permissions)){ ?>
                   <li class=" treeview">
@@ -250,7 +328,7 @@
                      </a>
                   </li>
                <?php } ?>
-               <?php if(in_array(12,$permissions)){ ?>
+               <?php if(in_array(11,$permissions)){ ?>
                   <li class=" treeview">
                      <a href="#">
                      <i class="fa fa-file-text"></i> <span>Topics </span>
@@ -264,28 +342,6 @@
                      </ul>
                   </li>
                <?php } ?>
-
-              <!--  Youtube Class -->
-
-              <?php if(in_array(11,$permissions)){ ?>
-                 <li class=" treeview">
-                    <a href="#">
-                    <i class="fa fa-file-text"></i> <span>Youtube Class </span>
-                    <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                    </a>
-                    <ul class="treeview-menu">
-                       <li><a href="addpdf.php"><i class="fa fa-circle-o"></i> Add PDF  </a></li>
-
-                       <li><a href="addyoutubevideo.php"><i class="fa fa-circle-o"></i> Add Video  </a></li>
-                       <li><a href="listpdf.php"><i class="fa fa-circle-o"></i> List PDFs </a></li>
-                       <li><a href="listyoutubevideo.php"><i class="fa fa-circle-o"></i> List Videos </a></li>
-                    </ul>
-                 </li>
-              <?php } ?>
-
-              <!-- Signout -->
                <li >
                   <a href="signout.php">
                   <i class="fa fa-sign-in"></i> <span>Sign Out </span>

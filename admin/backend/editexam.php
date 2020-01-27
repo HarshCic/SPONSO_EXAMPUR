@@ -3,7 +3,14 @@
 include 'header.php';
 
 $id = $_GET['id'];
-
+$sql = "SELECT * FROM `exam`  ";
+$allconcept=mysqli_query($ses, $sql);
+$category=$maxtitle=array();
+while($row=mysqli_fetch_array($allconcept, MYSQLI_ASSOC)) 
+{
+  array_push($maxtitle,$row['exam_name']);
+  array_push($category,$row['exam_category']);
+}
 $msg = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -178,7 +185,7 @@ else
 
                    <label for="title">Exam Name</label>
 
-                   <input type="text" class="form-control" name="image_text" value=<?php echo $fetch['exam_name'] ?> required>
+                   <input type="text" id="titles" class="form-control" name="image_text" value=<?php echo $fetch['exam_name'] ?> required>
 
 
 
@@ -188,7 +195,7 @@ else
 
                    <label for="title">Category</label>
 
-                   <input type="text" class="form-control" name="category" value=<?php echo $fetch['exam_category'] ?> required>
+                   <input type="text" id="category" class="form-control" name="category" value=<?php echo $fetch['exam_category'] ?> required>
 
 
 
@@ -226,3 +233,16 @@ else
 
   <?php include 'footer.php' ?>
 
+<script>
+  titles=<?php echo json_encode($maxtitle);?>;
+  categories=<?php echo json_encode($category);?>;
+  $(document).ready(function(){
+    $( "#titles" ).autocomplete({
+      source: titles
+    });
+    $( "#category" ).autocomplete({
+      source: categories
+    });  
+  });
+    
+</script>

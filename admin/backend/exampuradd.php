@@ -5,7 +5,13 @@
   include '../functions/exampurspecialfun.php';
 
    $msg='';
-
+  $sql = "SELECT * FROM `exampur_special`  ";
+  $allexampurtitles=mysqli_query($ses, $sql);
+  $maxtitle=array();
+  while($row=mysqli_fetch_array($allexampurtitles, MYSQLI_ASSOC)) 
+  {
+    array_push($maxtitle,$row['title']);
+  } 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $link=$_POST['link'];
@@ -90,7 +96,7 @@
 
               <label for="title">Title</label>
 
-              <input type="text" class="form-control" name="title" placeholder="Include the title of Video" required>
+              <input type="text" id="titles" class="form-control" name="title" placeholder="Include the title of Video" required>
 
             </div>
 
@@ -149,3 +155,12 @@
 </div>
 
 <?php include "footer.php";?>
+<script>
+  titles=<?php echo json_encode($maxtitle);?>;
+  $(document).ready(function(){
+    $( "#titles" ).autocomplete({
+      source: titles
+    });  
+  });
+    
+</script>

@@ -478,3 +478,40 @@ Stack trace:
 [25-Jan-2020 12:42:29 Asia/Calcutta] PHP Warning:  mysqli_select_db() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 6
 [25-Jan-2020 12:42:29 Asia/Calcutta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home/zx9dj0rx0w3j/public_html/admin/database/config.php on line 7
 [25-Jan-2020 13:18:43 Asia/Calcutta] PHP Notice:  Undefined variable: i in /home/zx9dj0rx0w3j/public_html/admin/backend/currentaffairlist.php on line 46
+[25-Jan-2020 14:42:44 Asia/Calcutta] PHP Notice:  Undefined variable: i in /home/zx9dj0rx0w3j/public_html/admin/backend/currentaffairlist.php on line 46
+[25-Jan-2020 09:25:36 UTC] PHP Parse error:  syntax error, unexpected '$msg' (T_VARIABLE) in /home/zx9dj0rx0w3j/public_html/admin/backend/addstudymaterial.php on line 26
+[25-Jan-2020 09:25:39 UTC] PHP Parse error:  syntax error, unexpected '$msg' (T_VARIABLE) in /home/zx9dj0rx0w3j/public_html/admin/backend/addstudymaterial.php on line 26
+[25-Jan-2020 09:25:46 UTC] PHP Parse error:  syntax error, unexpected '$msg' (T_VARIABLE) in /home/zx9dj0rx0w3j/public_html/admin/backend/addstudymaterial.php on line 26
+[25-Jan-2020 16:16:07 Asia/Calcutta] PHP Notice:  Undefined index: permissions in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 6
+[25-Jan-2020 16:16:07 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 74
+[25-Jan-2020 16:16:07 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 81
+[25-Jan-2020 16:16:07 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 108
+[25-Jan-2020 17:32:29 Asia/Calcutta] PHP Notice:  Undefined index: permissions in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 6
+[25-Jan-2020 17:32:29 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 77
+[25-Jan-2020 17:32:29 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 84
+[25-Jan-2020 17:32:29 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 111
+[25-Jan-2020 18:24:35 Asia/Calcutta] PHP Notice:  Undefined variable: i in /home/zx9dj0rx0w3j/public_html/admin/backend/currentaffairlist.php on line 46
+[25-Jan-2020 21:17:42 Asia/Calcutta] PHP Notice:  Undefined index: permissions in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 6
+[25-Jan-2020 21:17:42 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 77
+[25-Jan-2020 21:17:42 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 84
+[25-Jan-2020 21:17:42 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 111
+[25-Jan-2020 22:06:13 Asia/Calcutta] PHP Notice:  Undefined index: permissions in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 6
+[25-Jan-2020 22:06:13 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 77
+[25-Jan-2020 22:06:13 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 84
+[25-Jan-2020 22:06:13 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 111
+[26-Jan-2020 00:39:13 Asia/Calcutta] PHP Notice:  Undefined index: permissions in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 6
+[26-Jan-2020 00:39:13 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 77
+[26-Jan-2020 00:39:13 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 84
+[26-Jan-2020 00:39:13 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 111
+[26-Jan-2020 01:59:48 Asia/Calcutta] PHP Notice:  Undefined index: permissions in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 6
+[26-Jan-2020 01:59:48 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 77
+[26-Jan-2020 01:59:48 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 84
+[26-Jan-2020 01:59:48 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 111
+[26-Jan-2020 06:20:15 Asia/Calcutta] PHP Notice:  Undefined index: permissions in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 6
+[26-Jan-2020 06:20:15 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 77
+[26-Jan-2020 06:20:15 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 84
+[26-Jan-2020 06:20:15 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 111
+[26-Jan-2020 07:25:28 Asia/Calcutta] PHP Notice:  Undefined index: permissions in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 6
+[26-Jan-2020 07:25:28 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 77
+[26-Jan-2020 07:25:28 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 84
+[26-Jan-2020 07:25:28 Asia/Calcutta] PHP Notice:  Undefined index: login_user in /home/zx9dj0rx0w3j/public_html/admin/backend/header.php on line 111

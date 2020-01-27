@@ -3,12 +3,23 @@
 include 'header.php';
 
 $id=$_GET['id'];
-
+$sql = "SELECT `subject_name` FROM `subject`  ";
+$subject=mysqli_query($ses, $sql);
+$max=array();
+while($row=mysqli_fetch_array($subject, MYSQLI_ASSOC)) 
+{
+  $arrysub = array();
+  $arraysub = $row['subject_name'];
+  array_push($max,$arraysub);
+}
 $mymsg='';
 
  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-
+    $image_text = trim(mysqli_real_escape_string($ses, $_POST['image_text']));  
+  
+  $sql = "SELECT * FROM `subject` WHERE `subject_name`='".$image_text."'";
+  $result=mysqli_query($ses, $sql);
 
    if (isset($_POST['upload'])) {
 
@@ -158,7 +169,7 @@ $mymsg='';
 
                    <label for="title"> Name</label>
 
-                   <input type="text" class="form-control" name="image_text" value=<?php echo $fetch['subject_name'] ?> required>
+                   <input type="text" id="subjects" class="form-control" name="image_text" value=<?php echo $fetch['subject_name'] ?> required>
 
 
 
@@ -194,3 +205,12 @@ $mymsg='';
 
   <?php include 'footer.php' ?>
 
+  <script>
+    allsub=<?php echo json_encode($max);?>;
+    $(document).ready(function(){
+      $( "#subjects" ).autocomplete({
+        source: allsub
+      });  
+    });
+      
+  </script>

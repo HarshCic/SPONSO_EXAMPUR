@@ -2,6 +2,14 @@
   include 'header.php';
   include '../functions/featured.php';
   $msg='';
+  $sql = "SELECT * FROM `featured_video`  ";
+  $allfeatures=mysqli_query($ses, $sql);
+  $maxtitle=array();
+  while($row=mysqli_fetch_array($allfeatures, MYSQLI_ASSOC)) 
+  {
+    array_push($maxtitle,$row['title']);
+  }
+
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $link=$_POST['link'];
     $title=$_POST['title'];
@@ -51,7 +59,7 @@
               </div>
               <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" name="title" placeholder="Include the title of Video" required>
+                <input type="text" class="form-control " id="titles" name="title" placeholder="Include the title of Video" required>
               </div>
               <div class="form-group">
                 <label for="status">Live Status</label>
@@ -67,7 +75,7 @@
               </div>
               <div class="form-group">
                 <label for="download_link">Date and time</label>
-                <input type="text" class="form-control" name="date_and_time" placeholder="25-01-2020 at 01:26 AM" required>
+                <input type="text" class="form-control" name="date_and_time" placeholder="25-01-2020 at 01:26 AM" maxlength="20" required>
               </div>
 				    </div>
             <!-- /.box-body -->
@@ -83,3 +91,12 @@
 </div>
 <!-- /.content-wrapper -->
 <?php include 'footer.php' ?>
+<script>
+  titles=<?php echo json_encode($maxtitle);?>;
+  $(document).ready(function(){
+    $( "#titles" ).autocomplete({
+      source: titles
+    });  
+  });
+    
+</script>

@@ -4,7 +4,7 @@ include '../functions/examlistfun.php';
 include '../functions/conceptfun.php';
 include '../functions/topicfun.php';
 include '../functions/subjectfun.php';
-include '../functions/youtubevideofun.php';
+include '../functions/youtube_videofun.php';
 
 $list_exam = list_exams();
 $list_subject=list_subjects();
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
   else {
 	$query1=mysqli_query($ses,"SELECT * FROM youtube_class WHERE id=$id");
-    $fetch=mysqli_fetch_array($query1);
+    $fetch=mysqli_fetch_array($query1,MYSQLI_ASSOC);
     $examid=$fetch['exam_id'];
   }
    ?>

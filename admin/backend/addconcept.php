@@ -1,7 +1,14 @@
 <?php
-	include 'header.php';
-  $serverimage=$GLOBALS['serverimage'];
+include 'header.php';
+$serverimage=$GLOBALS['serverimage'];
 $msg='';
+$sql = "SELECT * FROM `concept`  ";
+$allconcept=mysqli_query($ses, $sql);
+$maxtitle=array();
+while($row=mysqli_fetch_array($allconcept, MYSQLI_ASSOC)) 
+{
+  array_push($maxtitle,$row['concept_name']);
+} 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (isset($_POST['upload'])) {
   	// Get image name
@@ -64,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <div class="form-group">
                     <label>Title</label>
-                    <input type="text" class="form-control" name="image_text"  placeholder="enter concept title.." required>
+                    <input type="text" id="titles" class="form-control" name="image_text"  placeholder="enter concept title.." required>
                 </div>
                 <span class="help-block">*All fields are Mandatory.</span>
               </div>
@@ -80,3 +87,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </section>
   </div>
 <?php include "footer.php";?>
+<script>
+  titles=<?php echo json_encode($maxtitle);?>;
+  $(document).ready(function(){
+    $( "#titles" ).autocomplete({
+      source: titles
+    });  
+  });
+    
+</script>

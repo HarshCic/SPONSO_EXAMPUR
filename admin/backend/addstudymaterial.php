@@ -1,8 +1,17 @@
 <?php
 include 'header.php';
 
-$msg='';
+$color=$msg='';
 
+$sql = "SELECT * FROM `study_material`  ";
+$subject=mysqli_query($ses, $sql);
+$max=array();
+while($row=mysqli_fetch_array($subject, MYSQLI_ASSOC)) 
+{
+  $arryarraytitlesub = array();
+  $arraytitle = $row['title'];
+  array_push($max,$arraytitle);
+}
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	$pdf_link=$_POST['link'];
@@ -15,11 +24,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	$price=$_POST['price'];
 
-	$query="INSERT into study_material(title,pdf_link,type,free_status,price) values  ('".$title."','".$pdf_link."','".$type."','".$status."','".$price."')";
+	$query="INSERT INTO `study_material`(`title`, `pdf_link`, `type`, `free_status`, `price`) values  ('".$title."','".$pdf_link."','".$type."','".$status."','".$price."')";
 
 	$result=mysqli_query($ses,$query);
-
-	$msg='Study Material Added successfully';
+	if ($result) {
+		$color="success";
+		$msg='Study Material Added successfully';
+	} else {
+		$color="danger";
+		$msg='Something wents wrong';
+	}
+	
+	
 
 }
 
@@ -80,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 					 <div class="form-group">
 
-						<div class="alert alert-success"><?php echo $msg; ?></div>
+						<div class="alert alert-<?php echo $color; ?>"><?php echo $msg; ?></div>
 
 					 </div>
 
@@ -90,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 					  <label for="title">Title <span class="star">*</span></label>
 
-					  <input type="text" class="form-control" name="title" placeholder="Include the title of Study material" required>
+					  <input type="text" id="title" class="form-control" name="title" placeholder="Include the title of Study material" required>
 
 					</div>
 
@@ -98,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 						<label for="link">Link <span class="star">*</span></label>
 
-						<input type="text" class="form-control" name="link" aria-describedby="link" placeholder="book.com" required>
+						<input type="url" class="form-control" name="link" aria-describedby="link" placeholder="book.com" required>
 
 					</div>
 
@@ -138,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 					  <label for="price">Price <span class="star">*</span></label>
 
-					  <input type="text" class="form-control" name="price" placeholder="Enter price in INR" required>
+					  <input type="text" class="form-control decimal" name="price"  placeholder="Enter price in INR" required maxlength="10">
 
 					</div>
 
@@ -173,3 +189,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <!-- /.content-wrapper -->
 
   <?php include 'footer.php' ?>
+  <script>
+  	allsub=<?php echo json_encode($max);?>;
+  	$(document).ready(function() {
+  		$('.decimal').keypress(function(event) {
+  			$(this).val($.trim($(this).val()).replace(/\s+/g, ""));
+		    if(event.which < 46 || event.which > 59) {
+		        event.preventDefault();
+		    } // prevent if not number/dot
+
+		    if(event.which == 46 && $(this).val().indexOf('.') != -1) {
+		        event.preventDefault();
+		    } // prevent if already dot
+		});
+		$( "#title" ).autocomplete({
+	        source: allsub
+	    }); 
+  	});
+  </script>

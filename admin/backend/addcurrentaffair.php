@@ -1,7 +1,15 @@
 <?php 
 include 'header.php';
 include '../functions/currentaffairfun.php';
-
+$sql = "SELECT * FROM `current_affair`  ";
+$subject=mysqli_query($ses, $sql);
+$max=array();
+while($row=mysqli_fetch_array($subject, MYSQLI_ASSOC)) 
+{
+  $arryarraytitlesub = array();
+  $arraytitle = $row['title'];
+  array_push($max,$arraytitle);
+}
 $msg = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $title=$_POST['title'];
@@ -76,11 +84,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
           <?php } ?>
           <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" name="title" placeholder="Include the title of Current Affair" required>
+            <input type="text" id="title" class="form-control" name="title" placeholder="Include the title of Current Affair" required>
           </div>
           <div class="form-group">
             <label for="title">PDF Link</label>
-            <input type="text" class="form-control" name="pdflink" placeholder="Enter pdf link.. " required>
+            <input type="url" class="form-control" name="pdflink" placeholder="Enter pdf link.. " required>
           </div>
           <div class="form-group">
             <label for="title">Type</label>
@@ -115,3 +123,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   <!-- /.content-wrapper -->
 
   <?php include 'footer.php' ?>
+
+  <script>
+    allsub=<?php echo json_encode($max);?>;
+    $(document).ready(function(){
+      $( "#title" ).autocomplete({
+        source: allsub
+      });  
+    });
+      
+  </script>

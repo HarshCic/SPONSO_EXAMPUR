@@ -150,7 +150,7 @@ $mymsg='';
 
 					   <label for="title">phone</label>
 
-					   <input type="text" class="form-control" name="phone" value=<?php echo $fetch['phone'] ?> required>
+					   <input type="text" class="form-control" name="phone" value="<?php echo $fetch['phone'] ?>" maxlength="13" minlength="10"  required>
 
 
 

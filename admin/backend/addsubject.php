@@ -3,6 +3,15 @@
 <?php include 'header.php';
 
 $msg='';
+$sql = "SELECT `subject_name` FROM `subject`  ";
+$subject=mysqli_query($ses, $sql);
+$max=array();
+while($row=mysqli_fetch_array($subject, MYSQLI_ASSOC)) 
+{
+  $arrysub = array();
+  $arraysub = $row['subject_name'];
+  array_push($max,$arraysub);
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -79,7 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <li><a href="#">Add Subject</a></li>
 
       </ol>
-
     </section>
 
 
@@ -132,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 					  <label for="title"> Name</label>
 
-					  <input type="text" class="form-control" name="image_text" placeholder="Enter here..." required>
+					  <input type="text" class="form-control" id="subjects" name="image_text" placeholder="Enter here..." required>
 
 
 
@@ -169,3 +177,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <!-- /.content-wrapper -->
 
   <?php include 'footer.php' ?>
+  <script>
+    allsub=<?php echo json_encode($max);?>;
+    $(document).ready(function(){
+      $( "#subjects" ).autocomplete({
+        source: allsub
+      });  
+    });
+      
+  </script>

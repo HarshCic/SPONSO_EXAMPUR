@@ -1,11 +1,17 @@
 <?php
 
-include 'header.php';
+  include 'header.php';
 
-$id=$_GET['id'];
+  $id=$_GET['id'];
 
-$mymsg='';
-
+  $mymsg='';
+  $sql = "SELECT * FROM `concept`  ";
+  $allconcept=mysqli_query($ses, $sql);
+  $maxtitle=array();
+  while($row=mysqli_fetch_array($allconcept, MYSQLI_ASSOC)) 
+  {
+    array_push($maxtitle,$row['concept_name']);
+  }
  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
@@ -156,7 +162,7 @@ $mymsg='';
 
                             <label> Title</label>
 
-                            <input type="text" class="form-control" name="image_text" value="<?php echo $fetch['concept_name'] ?>"  placeholder="enter concept title.." required>
+                            <input type="text" id="titles" class="form-control" name="image_text" value="<?php echo $fetch['concept_name'] ?>"  placeholder="enter concept title.." required>
 
                         </div>
 
@@ -189,3 +195,12 @@ $mymsg='';
   <!-- /.content-wrapper -->
 
   <?php include 'footer.php' ?>
+<script>
+  titles=<?php echo json_encode($maxtitle);?>;
+  $(document).ready(function(){
+    $( "#titles" ).autocomplete({
+      source: titles
+    });  
+  });
+    
+</script>

@@ -1,7 +1,16 @@
 <?php
 	include 'header.php';
 	$id=$_GET['id'];
-	$mymsg='';
+	$sql = "SELECT * FROM `study_material`  ";
+	$subject=mysqli_query($ses, $sql);
+	$max=array();
+	while($row=mysqli_fetch_array($subject, MYSQLI_ASSOC)) 
+	{
+	  $arryarraytitlesub = array();
+	  $arraytitle = $row['title'];
+	  array_push($max,$arraytitle);
+	}
+	$color=$mymsg='';
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	   	if (isset($_POST['update'])) {
 			$pdf_link=$_POST['link'];
@@ -14,8 +23,10 @@
 			$result = mysqli_query($ses, $sql);
 		   	
 		   	if ($result) {
+		   		$color="success";
 		   		$mymsg = "Record updated successfully";
 		   	}else{
+		   		$color="danger";
 		      	$mymsg="Something wents wrong";
 		   	}
 	   	}
@@ -51,16 +62,16 @@
 						<div class="box-body">
 							<?php if($mymsg!='') { ?>
 							<div class="form-group">
-								<div class="alert alert-success"><?php echo $mymsg; ?></div>
+								<div class="alert alert-<?php echo $color; ?>"><?php echo $mymsg; ?></div>
 							</div>
 							<?php } ?>
 							<div class="form-group">
 		                        <label for="title">Title <span class="star">*</span></label>
-		                        <input type="text" class="form-control" value="<?php echo $fetch['title'] ?> " name="title" placeholder="Include the title of Study material" required>
+		                        <input type="text" id="title" class="form-control" value="<?php echo $fetch['title'] ?> " name="title" placeholder="Include the title of Study material" required>
 		                    </div>
 		                    <div class="form-group">
 		                        <label for="link">Link <span class="star">*</span></label>
-		                        <input type="text" class="form-control" name="link" value="<?php echo $fetch['pdf_link'] ?> " aria-describedby="link" placeholder="book.com" required>
+		                        <input type="url" class="form-control" name="link" value="<?php echo $fetch['pdf_link'] ?> " aria-describedby="link" placeholder="book.com" required>
 		                    </div>
 		                    <div class="form-group">
 		                        <label for="type">Type <span class="star">*</span></label>
@@ -79,7 +90,7 @@
 		                    </div>
 		                    <div class="form-group">
 		                        <label for="price">Price <span class="star">*</span></label>
-		                        <input type="text" class="form-control" name="price" value="<?php echo $fetch['price']; ?> " placeholder="Enter price in INR" required>
+		                        <input type="text" class="form-control decimal" name="price" value="<?php echo $fetch['price']; ?> " placeholder="Enter price in INR" required>
 		                    </div>
 						</div>
 						<div class="box-footer">
@@ -95,3 +106,21 @@
 </div>
 <!-- /.content-wrapper -->
 <?php include 'footer.php' ?>
+ <script>
+  	allsub=<?php echo json_encode($max);?>;
+  	$(document).ready(function() {
+  		$('.decimal').keypress(function(event) {
+  			$(this).val($.trim($(this).val()).replace(/\s+/g, ""));
+		    if(event.which < 46 || event.which > 59) {
+		        event.preventDefault();
+		    } // prevent if not number/dot
+
+		    if(event.which == 46 && $(this).val().indexOf('.') != -1) {
+		        event.preventDefault();
+		    } // prevent if already dot
+		});
+		$( "#title" ).autocomplete({
+	        source: allsub
+	    }); 
+  	});
+  </script>

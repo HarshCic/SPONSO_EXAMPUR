@@ -1,8 +1,9 @@
 <?php include 'header.php';
 
-include '../functions/pdffun.php';
+include '../functions/youtubepdffun.php';
+include '../functions/livecoursefun.php';
 
-$list_pdf=list_pdf();
+$list_pdf=list_youtube_pdf();
 
 ?>
 
@@ -66,6 +67,17 @@ $list_pdf=list_pdf();
 
                 <th>Status</th>
 
+                <th>Exam</th>
+
+                <th>Subject</th>
+
+                <th>Topic</th>
+
+                <th>Concept</th>
+
+                <th>Date and Time</th>
+
+
                 <th>Download Link</th>
 
 								<th>Delete</th>
@@ -116,6 +128,13 @@ $list_pdf=list_pdf();
                      echo "Upcoming";
 
                      } ?></td>
+                     <td><?php echo getexam($fetch['exam_id']); ?></td>
+                     <td><?php echo getsubject($fetch['subject']); ?></td>
+   									<td><?php echo gettopicnm($fetch['topic']); ?></td>
+   									<td><?php echo getconceptnm($fetch['concept']); ?></td>
+
+                    <td><?php echo $fetch['date_and_time'] ?></td>
+
 
                   <td><a href=<?php echo $fetch['download_link'];?>> <?php echo $fetch['download_link'] ?></a></td>
 

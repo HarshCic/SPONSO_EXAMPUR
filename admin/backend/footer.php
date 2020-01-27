@@ -125,7 +125,8 @@
   })
 
 </script>
-
+<link rel="stylesheet" href="../dist/custom/css/jquery-ui.css">
+<script src="../dist/custom/js/jquery-ui.js"></script>
 </body>
 
 </html>
